@@ -7,7 +7,7 @@ import (
 )
 
 func Load() (err error) {
-	filePath := ".env"
+	filePath := ".env_example"
 
 	f, err := os.Open(filePath)
 	defer f.Close()
