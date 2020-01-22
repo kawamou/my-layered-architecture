@@ -6,15 +6,7 @@ import (
 	"strings"
 )
 
-package infrastructure
-
-import (
-	"bufio"
-	"os"
-	"strings"
-)
-
-func Load(logger usecases.Logger) {
+func Load() (err error) {
 	filePath := ".env"
 
 	f, err := os.Open(filePath)
@@ -30,4 +22,5 @@ func Load(logger usecases.Logger) {
 		pair := strings.Split(l, "=")
 		os.Setenv(pair[0], pair[1])
 	}
+	return
 }

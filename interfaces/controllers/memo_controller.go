@@ -1,4 +1,4 @@
-package interfaces
+package controllers
 
 import (
 	"strconv"
@@ -22,20 +22,21 @@ func NewMemoController (sqlHandler database.SqlHandler) *MemoController {
 	}
 }
 
-func (controller *MemoController) Show(c echo.context) (err error) {
+func (controller *MemoController) Show(c echo.Context) (err error) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	memo, err := controller.Interactor.MemoById(id)
 	if err != nil {
-		c.JSON(500, NewError(err))
+		c.JSON(500, err)
 		return
 	}
 	c.JSON(200, memo)
+	return
 }
 
 func (controller *MemoController) Index(c echo.Context) (err error) {
 	memos, err := controller.Interactor.Memos()
 	if err != nil {
-		c.JSON(500, NewError(err))
+		c.JSON(500, err)
 		return
 	}
 	c.JSON(200, memos)
@@ -47,9 +48,9 @@ func (controller *MemoController) Create(c echo.Context) (err error) {
 	c.Bind(&m)
 	memo, err := controller.Interactor.Add(m)
 	if err != nil {
-		c.JSON(500, NewError(err))
+		c.JSON(500, err)
 		return
 	}
-	c.JSON(201, user)
+	c.JSON(201, memo)
 	return
 }

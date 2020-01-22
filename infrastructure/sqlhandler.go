@@ -14,16 +14,16 @@ type SqlHandler struct {
 
 func NewSqlHandler() database.SqlHandler {
 	dataSourceName := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_HOST"), os.Getenv("DB_PORT"), os.Getenv("DB_DATABASE"))
-	conn, err := sql.Open(os.Getenv("DB_DRIVER"), dataSourceName)
+	conn, err := gorm.Open(os.Getenv("DB_DRIVER"), dataSourceName)
 	if err != nil {
 		panic(err.Error)
 	}
 	sqlHandler := new(SqlHandler)
-	sqlHandler.Conn := conn
+	sqlHandler.Conn = conn
 	return sqlHandler
 }
 
-func (handler *SqlHandler) Find(out interface{}, where ...interfaces{}) *gorm.DB {
+func (handler *SqlHandler) Find(out interface{}, where ...interface{}) *gorm.DB {
 	return handler.Conn.Find(out, where...)
 }
 

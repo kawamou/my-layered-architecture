@@ -14,7 +14,7 @@ func (interactor *MemoInteractor) MemoById(id int) (memo domain.Memo, err error)
 }
 
 func (interactor *MemoInteractor) Memos() (memos domain.Memos, err error) {
-	memos, err = interactor.MemoRepository.FindByAll()
+	memos, err = interactor.MemoRepository.FindAll()
 	return
 }
 

@@ -1,9 +1,5 @@
 package domain
 
-import (
-
-)
-
 type Memos []Memo
 
 type Memo struct {

@@ -1,6 +1,10 @@
-package interfaces
+package database
+
+import (
+	"github.com/jinzhu/gorm"
+)
 
 type SqlHandler interface {
-	Find(interface{}, ...interface{}) interface{}
-	Create(interface{}) interface{}
+	Find(interface{}, ...interface{}) *gorm.DB
+	Create(interface{}) *gorm.DB
 }
