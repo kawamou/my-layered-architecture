@@ -14,6 +14,6 @@ func Init() {
 	e.GET("/memo/:id", func(c echo.Context) error { return memoController.Show(c) })
 	e.POST("/create", func(c echo.Context) error { return memoController.Create(c) })
 
-	e.Logger.Fatal(e.Start(":88888"))
+	e.Logger.Fatal(e.Start(":8888"))
 }
 
