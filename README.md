@@ -1,5 +1,5 @@
 # go-cleanarchitecture-restapi
-Example of  REST API implemented in Go.
+Example of  REST API implemented in Go.  
 Go言語で実装したクリーンアーキテクチャのサンプルです。
 # 使用法
 実行
